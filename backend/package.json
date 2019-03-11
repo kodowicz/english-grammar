@@ -1,0 +1,23 @@
+{
+  "name": "sentences",
+  "version": "1.0.0",
+  "description": "sentences",
+  "main": "server.js",
+  "proxy": "localhost:5000",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodowicz/sentences.git"
+  },
+  "author": "Anna Kotowicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kodowicz/sentences/issues"
+  },
+  "homepage": "https://github.com/kodowicz/sentences#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10"
+  }
+}

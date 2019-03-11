@@ -1881,5 +1881,183 @@
         "english": "She heard me sing the anthem."
       }
     ]
+  },
+  {
+    "topic": "can, can’t - umiem, nie umiem",
+    "id": 73,
+    "sentences": [
+      {
+        "polish": "Potrafię robić pompki tylko na jednej ręce.",
+        "english": "I can do push-ups using only one arm."
+      },
+      {
+        "polish": "Dziecko jeszcze nie umie chodzić.",
+        "english": "The baby cannot walk yet."
+      },
+      {
+        "polish": "Czy umiesz mówić po angielsku?",
+        "english": "Can you speak English?"
+      },
+      {
+        "polish": "Umiał pływać, gdy miał 4 lata.",
+        "english": "He could swim when he was 4."
+      },
+      {
+        "polish": "Nie umiałam dosięgnąć tej półki.",
+        "english": "I couldn’t reach that shelf."
+      },
+      {
+        "polish": "Umiałeś wtedy robić zdjęcia?",
+        "english": "Could you make photos then?"
+      },
+      {
+        "polish": "Potrafi czytać, odkąd miała 3 lata.",
+        "english": "She has been able to read since she was 3."
+      },
+      {
+        "polish": "Niedługo będziemy umieli żeglować.",
+        "english": "We will be able to sail soon."
+      },
+      {
+        "polish": "Nie umiem szybko biegać, odkąd miałem kontuzję kolana.",
+        "english": "I haven’t been able to run fast ever since I hurt my knee."
+      },
+      {
+        "polish": "Chcę umieć latać.",
+        "english": "I want to be able to fly."
+      },
+      {
+        "polish": "Lubisz umieć mówić w 12 językach?",
+        "english": "Do you like being able to speak 12 languages?"
+      },
+      {
+        "polish": "Umiałem czysto śpiewać, gdy byłem dzieckiem.",
+        "english": "I could sing in tune when I was a child."
+      },
+      {
+        "polish": "Udało mi się zaśpiewać czysto całą piosenkę.",
+        "english": "I was able to sing the whole song in tune."
+      },
+      {
+        "polish": "Umiałam wspinać się po górach.",
+        "english": "I could climb mountains."
+      },
+      {
+        "polish": "Udało mi się wspiąć na tę górę.",
+        "english": "I was able to climb that mountain."
+      },
+      {
+        "polish": "Nie udało mi się otworzyć okna.",
+        "english": "I wasn’t able to open the window."
+      },
+      {
+        "polish": "Widzę twoje majtki.",
+        "english": "I can see your panties."
+      },
+      {
+        "polish": "Słyszysz mnie?",
+        "english": "Can you hear me?"
+      },
+      {
+        "polish": "Nic nie czuję.",
+        "english": "I can’t smell anything."
+      },
+      {
+        "polish": "Zdecydowanie czuję szczypiorek.",
+        "english": "I can definitely taste chives."
+      },
+      {
+        "polish": "Widzieliśmy wszystkie gwiazdy.",
+        "english": "We could see all the stars."
+      },
+      {
+        "polish": "Słyszałeś tę muzykę?",
+        "english": "Could you hear that music?"
+      },
+      {
+        "polish": "Maria potrafi bardzo dobrze pływać. Jest najszybsza pływaczką w naszej drużynie.",
+        "english": "Maria can swim very well. She is the fastest swimmer on our team."
+      },
+      {
+        "polish": "By być w stanie dobrze mówić po angielsku musisz uczyć się przynajmniej trzy lata.",
+        "english": "To be able to speak English well, you must study for at least three years."
+      },
+      {
+        "polish": "Nie możesz jeszcze prowadzić, więc zamiast samochodu kupiliśmy ci kucyka.",
+        "english": "You can’t drive yet, so instead of a car we’ve bought you a pony."
+      },
+      {
+        "polish": "Od jak dawna potrafisz jeździć konno?",
+        "english": "How long have you been able to ride a horse?"
+      },
+      {
+        "polish": "Ciasto czekoladowe wyglądało przepysznie, ale nie mogłam go zjeść, bo wciąż byłam pełna po spaghetti.",
+        "english": "The chocolate cake looked delicious, but I wasn’t able to eat it because I was still full from the spaghetti."
+      },
+      {
+        "polish": "Internet może ci bardzo pomóc kiedy uczysz się obcego języka.",
+        "english": "The internet can help you a lot when you’re learning a foreign language."
+      },
+      {
+        "polish": "Uwielbiam być w stanie zrozumieć film po angielsku.",
+        "english": "I love being able to understand an English-speaking film."
+      },
+      {
+        "polish": "Szczeniaki nie potrafią jeszcze widzieć, bo mają dopiero jeden tydzień.",
+        "english": "The puppies cannot see yet, because they are only one week old."
+      },
+      {
+        "polish": "‚Moja córka potrafiła liczyć do 10, kiedy miała 6 miesięcy!’ ‚Tak, oczywiście. Prawie ci uwierzyłam.’",
+        "english": "‚My daughter could count to 10 when she was 6 months old!’ ‚Yes, of course. I almost believe you.’"
+      },
+      {
+        "polish": "Chciałabym być wstanie lepiej gotować.",
+        "english": "I‘d like to be able to cook better."
+      },
+      {
+        "polish": "Czuję dym papierosowy. Idź stąd.",
+        "english": "I can smell cigarette smoke. Let’s get out of here."
+      },
+      {
+        "polish": "Czy udało ci się kupić świeże truskawki?",
+        "english": "Were you able to buy fresh strawberries?"
+      },
+      {
+        "polish": "Umiałaś pływać, gdy miałaś 5 lat?",
+        "english": "Could you swim when you was 5?"
+      },
+      {
+        "polish": "Nasza córka jeszcze nie umie jeździć na rowerze.",
+        "english": "Our daughter can’t ride a bike yet."
+      },
+      {
+        "polish": "Umiem upiec pyszne ciasto.",
+        "english": "I can bake a delicious cake."
+      },
+      {
+        "polish": "Umiem piec od 10 lat.",
+        "english": "I have been able to bake for 10 years."
+      },
+      {
+        "polish": "Jestem pewny, że uda ci się ukończyć maraton?",
+        "english": "I’m sure you will be able to complete the marathon."
+      },
+      {
+        "polish": "Czy potrafisz stać na głowie?",
+        "english": "Can you stand at your head?"
+      },
+      {
+        "polish": "Nie umiem odpowiedzieć na to pytanie.",
+        "english": "I can’t answer this question."
+      },
+      {
+        "polish": "Niestety policji nie udało się złapać złodziei.",
+        "english": "Unfortunately the police weren’t able to catch the thieves."
+      },
+      {
+        "polish": "Świadek nic nie widział z powodu gęstej mgły.",
+        "english": "The witness couldn’t see anything due to thick fog."
+      }
+    ]
   }
 ]
