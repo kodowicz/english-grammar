@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchTitles } from '../actions';
-
 
 class StartPage extends Component {
   componentDidMount() {
     this.props.fetchTitles();
   }
 
-  renderList = () => {
-    const { titles } = this.props;
-    return titles.map(title =>
-      <li key={title.id}
-        onClick={() => console.log('clicked')}
-        >
-        <Link to={`/topic/${title.id}`}>{title.topic}</Link>
-      </li>
-    )
-  }
-
   render() {
+    const { titles, selectTopic, closeStartPage } = this.props;
     return (
       <div>
         <h1>Select a topic</h1>
-        <ul>
-          {this.renderList()}
-        </ul>
+        {<Menu titles={titles} selectTopic={selectTopic} closeStartPage={closeStartPage} />}
       </div>
     );
   }
 }
 
 
-const mapStateToProps = state => ({
-  titles: state.titles
-})
+const Menu = ({ titles, selectTopic, closeStartPage }) => {
+  return (
+    <ul>
+      {titles.map(title =>
+        <li
+          key={title.id}
+          onClick={() => {
+            selectTopic(title.id);
+            closeStartPage()
+          }}
+          >
+          {title.topic}
+        </li>
+      )}
+    </ul>
+  )
+};
 
-export default connect(mapStateToProps, { fetchTitles })(StartPage);
+
+
+export default StartPage;
