@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Correctness from './Correctness';
-import EnglishSentence from './EnglishSentence';
+import CorrectAnswer from './CorrectAnswer';
+import UserAnswer from './UserAnswer';
 
 
 
@@ -32,9 +32,9 @@ class Sentences extends Component {
         {this.state.sentence &&
             <>
             <PolishSentence polish={this.state.sentence.polish} />
-            <Correctness isChecked={this.props.isChecked}>
-              <EnglishSentence english={this.state.sentence.english} handleCheck={this.props.handleCheck} />
-            </Correctness>
+            <CorrectAnswer english={this.state.sentence.english} isChecked={this.props.isChecked}>
+              <UserAnswer handleCheck={this.props.handleCheck} />
+            </CorrectAnswer>
           </>
         }
       </>
