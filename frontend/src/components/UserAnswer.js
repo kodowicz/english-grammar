@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 class UserAnswer extends Component {
   state = {
-    value: ''
+    value: '',
+    isVisible: true
   }
 
   handleSubmit = (event) => {
     if (this.state.value === undefined) return;
     event.preventDefault();
-    console.log(this.state.value);
     this.props.handleCheck(this.state.value);
+    this.setState({ isVisible: !this.state.isVisible })
   }
 
   handleChange = (event) => {
@@ -23,10 +24,11 @@ class UserAnswer extends Component {
           onChange={this.handleChange}
           //value={this.state.value}
           placeholder="type translation" />
-        <button
+        {this.state.isVisible &&
+          <button
           onClick={this.handleSubmit}>
           check</button>
-
+        }
       </div>
     );
   }

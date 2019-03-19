@@ -10,7 +10,6 @@ class Sentences extends Component {
   }
 
   componentDidMount() {
-    console.log('mounted');
     this.setState({
       sentence: this.randomSentence(this.props.sentences)
     })
@@ -26,13 +25,16 @@ class Sentences extends Component {
   }
 
   render() {
-
     return (
       <>
         {this.state.sentence &&
             <>
             <PolishSentence polish={this.state.sentence.polish} />
-            <CorrectAnswer english={this.state.sentence.english} isChecked={this.props.isChecked}>
+            <CorrectAnswer
+              sentenceId={this.state.sentence.sentenceId}
+              english={this.state.sentence.english}
+              id={this.props.id}
+              userAnswer={this.props.userAnswer}>
               <UserAnswer handleCheck={this.props.handleCheck} />
             </CorrectAnswer>
           </>
