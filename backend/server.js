@@ -34,8 +34,8 @@ function returnTopics(array) {
 
 
 
-app.get('/api/search/:query?', function(req, res) {
-  var query = req.params.query;
+app.get('/api/search/', function(req, res) {
+  var query = req.query.query;
   var topic = api.find(element => element.id == query);
 
   res.header('Content-Type', 'application/json');
