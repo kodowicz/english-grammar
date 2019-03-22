@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import CorrectAnswer from './CorrectAnswer';
 import UserAnswer from './UserAnswer';
+
+
+const Sentence = styled.p`
+  margin-bottom: 50px;
+  margin-top: ${({margin}) => margin ? '50px' : '85px'};
+  color: #805A41;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+`;
+
 
 
 
@@ -46,7 +58,7 @@ class Sentences extends Component {
 
 
 const PolishSentence = ({ polish }) => (
-  <p>{polish}</p>
+  <Sentence margin={false}>{polish}</Sentence>
 );
 
 

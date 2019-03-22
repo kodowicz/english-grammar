@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
+
+const List = styled.ul`
+  color: #FFFFFF;
+`;
 
 const Menu = ({ titles, selectTopic }) => {
   return (
-    <ul>list
+    <List>
       {titles.map(title =>
         <li
           key={title.id}
@@ -12,7 +17,7 @@ const Menu = ({ titles, selectTopic }) => {
           {title.topic}
         </li>
       )}
-    </ul>
+    </List>
   )
 };
 

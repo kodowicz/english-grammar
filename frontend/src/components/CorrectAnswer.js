@@ -1,17 +1,61 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+
+
+
+const Text = styled.p`
+  color: #B0795A;
+  font-weight: 700;
+  text-align: center;
+`;
+
+const Original = styled.p`
+  color: #805A41;
+  font-weight: 600;
+  text-align: center;
+`;
+
+const QuestionWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Question = styled.p`
+  color: #563B22;
+  font-weight: 600;
+  text-align: center;
+  width: 100%
+`;
+
+const Button = styled.button`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 10px 30px;
+  width: min-content;
+  background: #C48B6A;
+  box-shadow: 5px 5px 15px #B48970;
+  border: none;
+  border-radius: 20px;
+  margin: 20px 0
+`;
+
+
 
 const CorrectAnswer = ({ sentenceId, english, id, userAnswer, children }) => {
   return (
     <div>
       {userAnswer &&
         <div>
-          <p>original sentence:</p>
-          <p>{english}</p>
+          <Text>original sentence:</Text>
+          <Original>{english}</Original>
         </div>
       }
       {children}
       {userAnswer &&
-        <div>
+        <QuestionWrapper>
+          <Question>Was your translation approximate enough?</Question>
           <WrongAnswer />
           <GoodAnswer
             // create comperition
@@ -19,7 +63,7 @@ const CorrectAnswer = ({ sentenceId, english, id, userAnswer, children }) => {
             // english={english}
             id={id}
             sentenceId={sentenceId} />
-        </div>
+        </QuestionWrapper>
       }
     </div>
   );
@@ -29,7 +73,7 @@ const CorrectAnswer = ({ sentenceId, english, id, userAnswer, children }) => {
 class WrongAnswer extends Component {
   render() {
     return (
-      <button>Wrong</button>
+      <Button>Wrong</Button>
     );
   }
 };
@@ -52,7 +96,7 @@ class GoodAnswer extends Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>Good</button>
+      <Button onClick={this.handleClick}>Good</Button>
     );
   }
 };
