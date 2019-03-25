@@ -36,6 +36,11 @@ export const fetchSentences = number => async dispatch => {
   })
 };
 
+export const refreshPage = isRefreshed => ({
+  type: 'REFRESH_PAGE',
+  isRefreshed
+});
+
 export const fetchAllExamples = () => dispatch => {
   const response = JSON.parse(window.localStorage.getItem('allExamples')) || allExamples;
   window.localStorage.setItem('allExamples', JSON.stringify(allExamples));

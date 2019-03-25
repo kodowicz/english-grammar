@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 const allExamples = [
   { id: 7, examples: [] },
   { id: 9, examples: [] },
@@ -34,6 +35,15 @@ const sentencesFetched = (state = [], action) => {
   }
 };
 
+const refresh = (state = true, action) => {
+  switch (action.type) {
+    case 'REFRESH_PAGE':
+      return action.isRefreshed;
+    default:
+      return state
+  }
+}
+
 const allExamplesFetched = (state = allExamples, action) => {
   switch (action.type) {
     case 'FETCH_ALL_EXAMPLES':
@@ -61,7 +71,7 @@ const isMenuOpen = (state = false, action) => {
   }
 };
 
-const userAnswer = (state = false, action) => {
+const userAnswer = (state = '', action) => {
   switch (action.type) {
     case 'HANDLE_CHECK':
       return action.value;
@@ -83,6 +93,7 @@ const isStartPage = (state = true, action) => {
 export default combineReducers({
   titles: titlesFetched,
   sentences: sentencesFetched,
+  refresh: refresh,
   allExamples: allExamplesFetched,
   topicId: topicSelected,
   isOpen: isMenuOpen,

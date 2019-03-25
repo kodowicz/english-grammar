@@ -40,13 +40,16 @@ class Sentences extends Component {
     return (
       <>
         {this.state.sentence &&
-            <>
+          <>
             <PolishSentence polish={this.state.sentence.polish} />
             <CorrectAnswer
               sentenceId={this.state.sentence.sentenceId}
               english={this.state.sentence.english}
               id={this.props.id}
-              userAnswer={this.props.userAnswer}>
+              refresh={this.props.refresh}
+              userAnswer={this.props.userAnswer}
+              handleCheck={this.props.handleCheck}
+              refreshPage={this.props.refreshPage}>
               <UserAnswer handleCheck={this.props.handleCheck} />
             </CorrectAnswer>
           </>
@@ -58,7 +61,7 @@ class Sentences extends Component {
 
 
 const PolishSentence = ({ polish }) => (
-  <Sentence margin={false}>{polish}</Sentence>
+  <Sentence margin={false} lang="pl">{polish}</Sentence>
 );
 
 

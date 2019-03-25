@@ -22,16 +22,22 @@ class Main extends Component {
     this.props.fetchAllExamples();
   }
 
+  componentDidUpdate() {
+    this.props.refreshPage(true)
+  }
+
   render() {
-    const { topic, sentences, id, userAnswer, handleCheck } = this.props;
+    const { topic, id, sentences, refresh, userAnswer, refreshPage, handleCheck } = this.props;
     return (
       <Wrapper>
         <Title topic={topic} />
-        {sentences ?
+        {sentences && refresh ?
         <Sentences
           sentences={sentences}
           id={id}
+          refresh={refresh}
           userAnswer={userAnswer}
+          refreshPage={refreshPage}
           handleCheck={handleCheck} /> : null
         }
       </Wrapper>

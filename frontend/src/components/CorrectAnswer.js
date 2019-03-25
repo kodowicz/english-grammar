@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 
-
-
 const Text = styled.p`
   color: #B0795A;
   font-weight: 700;
@@ -18,14 +16,15 @@ const Original = styled.p`
 
 const QuestionWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const Question = styled.p`
   color: #563B22;
   font-weight: 600;
   text-align: center;
-  width: 100%
+  margin: 40px auto 20px;
+  width: 60%
 `;
 
 const Button = styled.button`
@@ -38,12 +37,11 @@ const Button = styled.button`
   box-shadow: 5px 5px 15px #B48970;
   border: none;
   border-radius: 20px;
-  margin: 20px 0
 `;
 
 
 
-const CorrectAnswer = ({ sentenceId, english, id, userAnswer, children }) => {
+const CorrectAnswer = ({ sentenceId, english, id, refresh, userAnswer, handleCheck, refreshPage, children }) => {
   return (
     <div>
       {userAnswer &&
@@ -54,16 +52,22 @@ const CorrectAnswer = ({ sentenceId, english, id, userAnswer, children }) => {
       }
       {children}
       {userAnswer &&
-        <QuestionWrapper>
+        <div>
           <Question>Was your translation approximate enough?</Question>
-          <WrongAnswer />
+          <QuestionWrapper>
+          <WrongAnswer
+            handleCheck={handleCheck}
+            refreshPage={refreshPage} />
           <GoodAnswer
             // create comperition
             // userAnswer={userAnswer}
             // english={english}
             id={id}
-            sentenceId={sentenceId} />
+            sentenceId={sentenceId}
+            handleCheck={handleCheck}
+            refreshPage={refreshPage} />
         </QuestionWrapper>
+      </div>
       }
     </div>
   );
@@ -71,9 +75,14 @@ const CorrectAnswer = ({ sentenceId, english, id, userAnswer, children }) => {
 
 
 class WrongAnswer extends Component {
+  handleClick = () => {
+    this.props.refreshPage(false);
+    this.props.handleCheck('');
+  }
+
   render() {
     return (
-      <Button>Wrong</Button>
+      <Button onClick={this.handleClick}>Wrong</Button>
     );
   }
 };
@@ -92,6 +101,9 @@ class GoodAnswer extends Component {
 
     window.localStorage.setItem('allExamples', JSON.stringify(allGoodAnswers));
     window.localStorage.setItem(this.props.id, JSON.stringify(goodAnswers));
+
+    this.props.refreshPage(false);
+    this.props.handleCheck('');
   }
 
   render() {

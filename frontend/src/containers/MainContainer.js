@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchSentences, fetchAllExamples, selectTopic, handleMenu, handleCheck } from '../actions';
+import { fetchSentences, refreshPage, fetchAllExamples, selectTopic, handleMenu, handleCheck } from '../actions';
 
 import Navigation from '../components/Navigation';
 import Main from '../components/Main';
@@ -19,11 +19,12 @@ const MainContainer = (props) => {
           <Main
             topic={props.topic}
             id={props.id}
-            // sentence={props.sentence}
             sentences={props.sentences}
+            refresh={props.refresh}
             allExamples={props.allExamples}
             userAnswer={props.userAnswer}
             fetchSentences={props.fetchSentences}
+            refreshPage={props.refreshPage}
             fetchAllExamples={props.fetchAllExamples}
             handleCheck={props.handleCheck} />
         </div>
@@ -36,6 +37,7 @@ const mapStateToProps = state => ({
   titles: state.titles,
   topic: state.sentences.topic,
   sentences: state.sentences.sentences,
+  refresh: state.refresh,
   allExamples: state.allExamples,
   id: state.topicId,
   isOpen: state.isOpen,
@@ -43,7 +45,7 @@ const mapStateToProps = state => ({
   isStartPage: state.isStartPage
 })
 
-const mapDispatchToProps = { fetchSentences, fetchAllExamples, selectTopic, handleMenu, handleCheck };
+const mapDispatchToProps = { fetchSentences, refreshPage, fetchAllExamples, selectTopic, handleMenu, handleCheck };
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
