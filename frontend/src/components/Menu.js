@@ -32,26 +32,28 @@ const Title = styled.span`
   width: 85%
 `;
 
-// const Menu = ({ titles, selectTopic }) => {
-//   return (
-//     <List>
-//       {titles.map(title =>
-//         <li
-//           key={title.id}
-//           onClick={(event) => selectTopic(title.id)}
-//           >
-//           {title.topic}
-//         </li>
-//       )}
-//     </List>
-//   )
-// };
 
 class Menu extends Component {
+  getPercentage = (id) => {
+    const topic = this.props.examples.find(topic => topic.id === id);
+    const percent = Math.round((topic.examples.length * 100) / topic.all);
+
+    return percent;
+  }
+  
+
   handleClick = (id) => {
     this.props.selectTopic(id);
     if (this.props.closeStartPage) {
       this.props.closeStartPage()
+    }
+
+    if (this.props.refreshPage) {
+      this.props.refreshPage(false);
+    }
+
+    if (this.props.handleMenu) {
+      this.props.handleMenu()
     }
   }
 
@@ -64,7 +66,7 @@ class Menu extends Component {
             onClick={() => this.handleClick(title.id)}>
               <Anchor href="#">
                 <Title>{title.topic}</Title>
-                <span>0%</span>
+                <span>{this.getPercentage(title.id)}%</span>
               </Anchor>
           </ListItem>
         )}

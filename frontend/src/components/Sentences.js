@@ -57,7 +57,10 @@ class Sentences extends Component {
               english={this.state.sentence.english}
               id={this.props.id}
               refresh={this.props.refresh}
+              examples={this.props.examples}
               userAnswer={this.props.userAnswer}
+              fetchSentences={this.props.fetchSentences}
+              fetchExamples={this.props.fetchExamples}
               handleCheck={this.props.handleCheck}
               refreshPage={this.props.refreshPage}>
               <UserAnswer handleCheck={this.props.handleCheck} />

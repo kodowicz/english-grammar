@@ -1,20 +1,21 @@
 import { combineReducers } from 'redux';
 
-const allExamples = [
-  { id: 7, examples: [] },
-  { id: 9, examples: [] },
-  { id: 19, examples: [] },
-  { id: 20, examples: [] },
-  { id: 21, examples: [] },
-  { id: 22, examples: [] },
-  { id: 23, examples: [] },
-  { id: 24, examples: [] },
-  { id: 25, examples: [] },
-  { id: 26, examples: [] },
-  { id: 41, examples: [] },
-  { id: 64, examples: [] },
-  { id: 73, examples: [] },
-  { id: 81, examples: [] }
+const examples = [
+  { id: 7, examples: [], all: 59 },
+  { id: 9, examples: [], all: 39 },
+  { id: 19, examples: [], all: 19 },
+  { id: 20, examples: [], all: 30 },
+  { id: 21, examples: [], all: 84 },
+  { id: 22, examples: [], all: 59 },
+  { id: 23, examples: [], all: 27 },
+  { id: 24, examples: [], all: 38 },
+  { id: 25, examples: [], all: 48 },
+  { id: 26, examples: [], all: 45 },
+  { id: 29, examples: [], all: 35 },
+  { id: 41, examples: [], all: 1 },
+  { id: 64, examples: [], all: 65 },
+  { id: 73, examples: [], all: 43 },
+  { id: 81, examples: [], all: 52 }
 ]
 
 const titlesFetched = (state = [], action) => {
@@ -44,9 +45,9 @@ const refresh = (state = true, action) => {
   }
 }
 
-const allExamplesFetched = (state = allExamples, action) => {
+const examplesFetched = (state = examples, action) => {
   switch (action.type) {
-    case 'FETCH_ALL_EXAMPLES':
+    case 'FETCH_EXAMPLES':
       return action.payload;
     default:
       return state
@@ -94,7 +95,7 @@ export default combineReducers({
   titles: titlesFetched,
   sentences: sentencesFetched,
   refresh: refresh,
-  allExamples: allExamplesFetched,
+  examples: examplesFetched,
   topicId: topicSelected,
   isOpen: isMenuOpen,
   userAnswer: userAnswer,

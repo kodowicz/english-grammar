@@ -63,7 +63,7 @@ class UserAnswer extends Component {
   }
 
   handleSubmit = (event) => {
-    if (this.state.value.length == 0) return;
+    if (this.state.value.length === 0) return;
     event.preventDefault();
     this.props.handleCheck(this.state.value);
     this.setState({ isVisible: !this.state.isVisible })

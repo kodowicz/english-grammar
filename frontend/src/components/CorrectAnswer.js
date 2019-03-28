@@ -49,7 +49,7 @@ const Button = styled.button`
 
 
 
-const CorrectAnswer = ({ sentenceId, english, id, refresh, userAnswer, handleCheck, refreshPage, children }) => {
+const CorrectAnswer = ({ sentenceId, english, id, refresh, examples, userAnswer, fetchSentences, fetchExamples, handleCheck, refreshPage, children }) => {
   return (
     <div>
       {userAnswer &&
@@ -64,6 +64,7 @@ const CorrectAnswer = ({ sentenceId, english, id, refresh, userAnswer, handleChe
           <Question>Was your translation approximate enough?</Question>
           <QuestionWrapper>
           <WrongAnswer
+            fetchSentences={fetchSentences}
             handleCheck={handleCheck}
             refreshPage={refreshPage} />
           <GoodAnswer
@@ -72,6 +73,9 @@ const CorrectAnswer = ({ sentenceId, english, id, refresh, userAnswer, handleChe
             // english={english}
             id={id}
             sentenceId={sentenceId}
+            examples={examples}
+            fetchSentences={fetchSentences}
+            fetchExamples={fetchExamples}
             handleCheck={handleCheck}
             refreshPage={refreshPage} />
         </QuestionWrapper>
@@ -86,6 +90,7 @@ class WrongAnswer extends Component {
   handleClick = () => {
     this.props.refreshPage(false);
     this.props.handleCheck('');
+    //this.props.fetchSentences(this.props.id);
   }
 
   render() {
@@ -100,18 +105,20 @@ class WrongAnswer extends Component {
 
 class GoodAnswer extends Component {
   handleClick = () => {
-    let goodAnswers = JSON.parse(window.localStorage.getItem(this.props.id)) || [];
-    let allGoodAnswers = JSON.parse(window.localStorage.getItem('allExamples'));
+    //let goodAnswers = JSON.parse(window.localStorage.getItem(this.props.id)) || [];
+      let allGoodAnswers = JSON.parse(window.localStorage.getItem('allExamples')) || this.props.examples;
 
     let topic = allGoodAnswers.find(topic => topic.id === this.props.id);
     topic.examples.push(this.props.sentenceId);
-    goodAnswers.push(this.props.sentenceId);
+    //goodAnswers.push(this.props.sentenceId);
 
     window.localStorage.setItem('allExamples', JSON.stringify(allGoodAnswers));
-    window.localStorage.setItem(this.props.id, JSON.stringify(goodAnswers));
+    //window.localStorage.setItem(this.props.id, JSON.stringify(goodAnswers));
 
     this.props.refreshPage(false);
     this.props.handleCheck('');
+    this.props.fetchExamples();
+    //this.props.fetchSentences(this.props.id);
   }
 
   render() {

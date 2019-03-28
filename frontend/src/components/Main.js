@@ -6,11 +6,6 @@ import Sentences from './Sentences';
 const Wrapper = styled.div`
   width: 88vw;
   margin: 0 auto;
-
-  ${'' /* @media (min-width: 1000px) {
-    width: 40vw;
-    max-width: 500px */}
-  }
 `;
 
 const Topic = styled.h1`
@@ -30,26 +25,32 @@ const Topic = styled.h1`
 class Main extends Component {
   componentDidMount() {
     this.props.fetchSentences(this.props.id);
-    this.props.fetchAllExamples();
+    this.props.fetchExamples();
   }
-
+// fetchSentences 
+// refreshPage
   componentDidUpdate() {
-    this.props.refreshPage(true)
+    this.props.refreshPage(true);
   }
 
   render() {
-    const { topic, id, sentences, refresh, userAnswer, refreshPage, handleCheck } = this.props;
+    const { topic, id, sentences, refresh, examples, userAnswer, fetchSentences, fetchExamples, refreshPage, handleCheck } = this.props;
     return (
       <Wrapper>
-        <Title topic={topic} />
         {sentences && refresh ?
-        <Sentences
-          sentences={sentences}
-          id={id}
-          refresh={refresh}
-          userAnswer={userAnswer}
-          refreshPage={refreshPage}
-          handleCheck={handleCheck} /> : null
+          <div>
+            <Title topic={topic} />
+            <Sentences
+              sentences={sentences}
+              id={id}
+              refresh={refresh}
+              examples={examples}
+              userAnswer={userAnswer}
+              fetchSentences={fetchSentences}
+              fetchExamples={fetchExamples}
+              refreshPage={refreshPage}
+              handleCheck={handleCheck} />
+          </div> : null
         }
       </Wrapper>
     )
