@@ -4,7 +4,17 @@ import CorrectAnswer from './CorrectAnswer';
 import UserAnswer from './UserAnswer';
 
 
-const Sentence = styled.p`
+const Wrapper = styled.div`
+  width: auto;
+
+  @media (min-width: 1000px) {
+    width: 40vw;
+    max-width: 500px;
+    margin: 0 auto
+  }
+`;
+
+const Polish = styled.p`
   margin-bottom: 50px;
   margin-top: ${({margin}) => margin ? '50px' : '85px'};
   color: #805A41;
@@ -40,7 +50,7 @@ class Sentences extends Component {
     return (
       <>
         {this.state.sentence &&
-          <>
+          <Wrapper>
             <PolishSentence polish={this.state.sentence.polish} />
             <CorrectAnswer
               sentenceId={this.state.sentence.sentenceId}
@@ -52,7 +62,7 @@ class Sentences extends Component {
               refreshPage={this.props.refreshPage}>
               <UserAnswer handleCheck={this.props.handleCheck} />
             </CorrectAnswer>
-          </>
+          </Wrapper>
         }
       </>
     );
@@ -61,7 +71,7 @@ class Sentences extends Component {
 
 
 const PolishSentence = ({ polish }) => (
-  <Sentence margin={false} lang="pl">{polish}</Sentence>
+  <Polish margin={false} lang="pl">{polish}</Polish>
 );
 
 

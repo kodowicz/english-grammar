@@ -12,6 +12,10 @@ const Original = styled.p`
   color: #805A41;
   font-weight: 600;
   text-align: center;
+
+  @media (min-width: 1000px) {
+    margin-bottom: 30px
+  }
 `;
 
 const QuestionWrapper = styled.div`
@@ -24,7 +28,11 @@ const Question = styled.p`
   font-weight: 600;
   text-align: center;
   margin: 40px auto 20px;
-  width: 60%
+  width: 60%;
+
+  @media (min-width: 1000px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const Button = styled.button`

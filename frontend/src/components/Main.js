@@ -4,15 +4,26 @@ import Sentences from './Sentences';
 
 
 const Wrapper = styled.div`
-  padding: 0 12vw;
+  width: 88vw;
+  margin: 0 auto;
+
+  ${'' /* @media (min-width: 1000px) {
+    width: 40vw;
+    max-width: 500px */}
+  }
 `;
 
 const Topic = styled.h1`
   font-size: 22px;
   font-weight: 700;
   color: #FFE5D5;
-  margin: 100px 0 0;
+  margin: 100px auto 0;
   text-align: center;
+
+  @media (min-width: 1000px) {
+    font-size: 36px;
+    max-width: 800px
+  }
 `;
 
 

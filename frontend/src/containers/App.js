@@ -14,6 +14,20 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     margin: 0;
   }
+
+    body::-webkit-scrollbar {
+      width: 10px
+    }
+    body::-webkit-scrollbar-track {
+
+    }
+    body::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,.5);
+      border-radius: 10px
+    }
+
+
+  }
 `
 
 

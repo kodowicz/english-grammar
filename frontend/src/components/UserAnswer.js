@@ -10,7 +10,8 @@ const Wrapper = styled.div`
 
 const TextWrapper = styled.div`
   position: relative;
-  width: 100%
+  width: 100%;
+  max-width: 500px
 `;
 
 const Label = styled.label`
@@ -22,6 +23,8 @@ const Label = styled.label`
 `;
 
 const Textarea = styled.textarea`
+  position: relative;
+  box-sizing: border-box;
   background: none;
   border: none;
   border-bottom: 2px solid #805A41;
@@ -31,7 +34,10 @@ const Textarea = styled.textarea`
   font-family: 'Montserrat', sans-serif;
   color: #523A28;
   height: min-content;
-  width: 100%
+  width: 100%;
+  outline: none;
+  resize: none;
+
 `;
 
 const Button = styled.button`
@@ -87,6 +93,7 @@ class UserAnswer extends Component {
           }
           <Textarea
             id="answer"
+            rows="1"
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onChange={this.handleChange}>

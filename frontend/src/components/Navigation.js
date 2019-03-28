@@ -4,17 +4,21 @@ import Menu from './Menu';
 
 
 const Nav = styled.nav`
-  position: fixed;
+  position: absolute;
+  z-index: 3;
   top: 0;
   right: 0;
   width: 100vw;
+  background: #E6B08C;
   height: ${({height}) => height};
+  height: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 const Button = styled.button`
+  align-self: flex-end;
   background: none;
   border: none;
   font-family: 'Montserrat', sans-serif;
@@ -24,6 +28,12 @@ const Button = styled.button`
   margin: 15px 10px;
 `;
 
+const Wrapper = styled.div`
+  @media (min-width: 1000px) {
+    width: 800px;
+    margin: 0 auto
+  }
+`;
 
 const Navigation = ({ titles, isOpen, selectTopic, handleMenu }) => {
   return (
@@ -32,8 +42,9 @@ const Navigation = ({ titles, isOpen, selectTopic, handleMenu }) => {
         onClick={() => handleMenu()}>
         menu
       </Button>
-
-      {isOpen && <Menu titles={titles} selectTopic={selectTopic} isOpen={isOpen} />}
+      <Wrapper>
+        {isOpen && <Menu titles={titles} selectTopic={selectTopic} />}
+      </Wrapper>
     </Nav>
   )
 };
