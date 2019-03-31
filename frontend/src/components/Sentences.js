@@ -34,7 +34,7 @@ class Sentences extends Component {
   componentDidMount() {
     this.setState({
       sentence: this.randomSentence(this.props.sentences)
-    })
+    });
   }
 
   randomSentence(array) {

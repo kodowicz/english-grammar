@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Navigation = ({ titles, examples, isOpen, selectTopic, refreshPage, handleMenu }) => {
+const Navigation = ({ titles, examples, isOpen, selectTopic, refreshPage, changeTopic, handleMenu }) => {
   return (
     <Nav height={isOpen ? '100vh' : 'auto'}>
       <Button
@@ -49,6 +49,7 @@ const Navigation = ({ titles, examples, isOpen, selectTopic, refreshPage, handle
             examples={examples}
             selectTopic={selectTopic}
             refreshPage={refreshPage}
+            changeTopic={changeTopic}
             handleMenu={handleMenu} />
         }
       </Wrapper>

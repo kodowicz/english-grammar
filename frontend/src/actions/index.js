@@ -42,25 +42,19 @@ export const refreshPage = isRefreshed => ({
   isRefreshed
 });
 
+export const changeTopic = (isChanged) => ({
+  type: 'CHANGE_TOPIC',
+  isChanged
+})
+
 export const fetchExamples = () => dispatch => {
   const response = JSON.parse(window.localStorage.getItem('allExamples')) || examples;
-
-  // window.localStorage.setItem('allExamples', JSON.stringify(examples));
 
   dispatch({
     type: 'FETCH_EXAMPLES',
     payload: response
   })
 };
-
-// export const fetchExamples = number => async dispatch => {
-//   const response = await JSON.parse(window.localStorage.getItem(number));
-//
-//   dispatch({
-//     type: 'FETCH_EXAMPLES',
-//     payload: response
-//   })
-// };
 
 export const selectTopic = id => ({
   type: 'TOPIC_SELECTED',

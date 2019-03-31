@@ -43,7 +43,16 @@ const refresh = (state = true, action) => {
     default:
       return state
   }
-}
+};
+
+const topicChanged = (state = true, action) => {
+  switch (action.type) {
+    case 'CHANGE_TOPIC':
+      return action.isChanged;
+    default:
+      return state
+  }
+};
 
 const examplesFetched = (state = examples, action) => {
   switch (action.type) {
@@ -52,7 +61,7 @@ const examplesFetched = (state = examples, action) => {
     default:
       return state
   }
-}
+};
 
 const topicSelected = (state = null, action) => {
   switch (action.type) {
@@ -79,7 +88,7 @@ const userAnswer = (state = '', action) => {
     default:
       return state
   }
-}
+};
 
 const isStartPage = (state = true, action) => {
   switch (action.type) {
@@ -95,6 +104,7 @@ export default combineReducers({
   titles: titlesFetched,
   sentences: sentencesFetched,
   refresh: refresh,
+  topicChanged: topicChanged,
   examples: examplesFetched,
   topicId: topicSelected,
   isOpen: isMenuOpen,

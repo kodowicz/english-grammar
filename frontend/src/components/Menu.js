@@ -37,24 +37,27 @@ class Menu extends Component {
   getPercentage = (id) => {
     const topic = this.props.examples.find(topic => topic.id === id);
     const percent = Math.round((topic.examples.length * 100) / topic.all);
-
     return percent;
   }
-  
 
   handleClick = (id) => {
     this.props.selectTopic(id);
+
     if (this.props.closeStartPage) {
       this.props.closeStartPage()
-    }
+    };
 
     if (this.props.refreshPage) {
       this.props.refreshPage(false);
-    }
+    };
 
     if (this.props.handleMenu) {
       this.props.handleMenu()
-    }
+    };
+
+    if (this.props.changeTopic) {
+      this.props.changeTopic(false);
+    };
   }
 
   render() {
