@@ -1,7 +1,7 @@
 # Sentences 📝
 
 ## Introduction
-This application was created for better understanding English grammar. All sentences were taken from a book [Grama To Nie Drama](https://altenberg.pl/arlena/) written by Arlena Witt. I love this book but paper is not indestructible so that's why this application has been created. I want to share this app with people that also learn English using this book. 
+This application was created for practice English grammar. All sentences are taken from a book *[Grama To Nie Drama](https://altenberg.pl/arlena/)* written by Arlena Witt. I love this book but paper is not indestructible so that's why this application has been created. I want to share this app with people that also learn English using this book.
 
 ## Installation
 ```
@@ -16,8 +16,8 @@ This application was created for better understanding English grammar. All sente
 ## Purposes
 - [ ] create a dynamic app by React
 - [ ] follow RWD idea
-- [ ] create own API
-- [ ] manage the data by backend
+- [x] create own API
+- [x] manage the data by backend
 
 ## Built with
 This project was created using:
