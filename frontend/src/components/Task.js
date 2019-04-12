@@ -28,14 +28,6 @@ class Task extends Component {
     this.props.fetchExamples();
   }
 
-  componentWillUnmount() {
-    this.props.fetchSentences(null);
-  }
-  // componentDidUpdate() {
-  //   this.props.refreshPage(true);
-  //   this.props.changeTopic(true);
-  // }
-
   render() {
     const { topic, id, sentences, refresh, examples, userAnswer, fetchSentences, fetchExamples, refreshPage, handleCheck } = this.props;
     return (

@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
   @media (min-width: 1000px) {
     width: 40vw;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto
   }
 `;
@@ -35,6 +35,15 @@ class Sentences extends Component {
     this.setState({
       sentence: this.randomSentence(this.props.sentences)
     });
+  }
+
+  componentWillReceiveProps (newProps) {
+    if (this.props.sentences !== newProps.sentences) {
+      console.log('CHANGED');
+      this.setState({
+        sentence: this.randomSentence(newProps.sentences)
+      });
+    }
   }
 
   randomSentence(array) {

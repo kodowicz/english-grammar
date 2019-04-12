@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const TextWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 500px
+  max-width: 400px
 `;
 
 const Label = styled.label`
@@ -64,9 +64,11 @@ class UserAnswer extends Component {
 
   handleSubmit = (event) => {
     if (this.state.value.length === 0) return;
-    event.preventDefault();
-    this.props.handleCheck(this.state.value);
-    this.setState({ isVisible: !this.state.isVisible })
+    if (event.keyCode === 13 || event.target.matches('button')) {
+      event.preventDefault();
+      this.props.handleCheck(this.state.value);
+      this.setState({ isVisible: !this.state.isVisible })
+    }
   }
 
   handleChange = (event) => {
@@ -93,10 +95,11 @@ class UserAnswer extends Component {
           }
           <Textarea
             id="answer"
-            rows="1"
+            rows="3"
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            onChange={this.handleChange}>
+            onChange={this.handleChange}
+            onKeyDown={this.handleSubmit}>
           </Textarea>
         </TextWrapper>
         {this.state.isVisible &&
