@@ -57,6 +57,7 @@ class Menu extends Component {
 
     if (this.props.changeTopic) {
       this.props.changeTopic(false);
+      this.props.handleCheck('')
     };
   }
 

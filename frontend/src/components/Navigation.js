@@ -31,26 +31,27 @@ const Button = styled.button`
 const Wrapper = styled.div`
   @media (min-width: 1000px) {
     width: 800px;
-    margin: 0 auto
   }
 `;
 
-const Navigation = ({ titles, examples, isOpen, selectTopic, refreshPage, changeTopic, handleMenu }) => {
+const Navigation = (props) => {
   return (
-    <Nav height={isOpen ? '100vh' : 'auto'}>
+    <Nav height={props.isOpen ? '100vh' : 'auto'}>
       <Button
-        onClick={() => handleMenu()}>
+        onClick={() => props.handleMenu()}>
         menu
       </Button>
       <Wrapper>
-        {isOpen &&
+        {props.isOpen &&
           <Menu
-            titles={titles}
-            examples={examples}
-            selectTopic={selectTopic}
-            refreshPage={refreshPage}
-            changeTopic={changeTopic}
-            handleMenu={handleMenu} />
+            titles={props.titles}
+            examples={props.examples}
+            fetchSentences={props.fetchSentences}
+            selectTopic={props.selectTopic}
+            refreshPage={props.refreshPage}
+            changeTopic={props.changeTopic}
+            handleMenu={props.handleMenu}
+            handleCheck={props.handleCheck} />
         }
       </Wrapper>
     </Nav>

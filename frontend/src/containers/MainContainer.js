@@ -16,9 +16,11 @@ const MainContainer = (props) => {
             examples={props.examples}
             isOpen={props.isOpen}
             selectTopic={props.selectTopic}
+            fetchSentences={props.fetchSentences}
             refreshPage={props.refreshPage}
             changeTopic={props.changeTopic}
-            handleMenu={props.handleMenu} />
+            handleMenu={props.handleMenu}
+            handleCheck={props.handleCheck} />
           <Main
             topic={props.topic}
             id={props.id}
