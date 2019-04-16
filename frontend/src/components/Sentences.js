@@ -39,7 +39,6 @@ class Sentences extends Component {
 
   componentWillReceiveProps (newProps) {
     if (this.props.sentences !== newProps.sentences) {
-      console.log('CHANGED');
       this.setState({
         sentence: this.randomSentence(newProps.sentences)
       });
@@ -72,7 +71,15 @@ class Sentences extends Component {
               fetchExamples={this.props.fetchExamples}
               handleCheck={this.props.handleCheck}
               refreshPage={this.props.refreshPage}>
-              <UserAnswer handleCheck={this.props.handleCheck} />
+              <UserAnswer
+                sentenceId={this.state.sentence.sentenceId}
+                english={this.state.sentence.english}
+                id={this.props.id}
+                examples={this.props.examples}
+                fetchExamples={this.props.fetchExamples}
+                handleCheck={this.props.handleCheck}
+                refreshPage={this.props.refreshPage}
+              />
             </CorrectAnswer>
           </Wrapper>
         }

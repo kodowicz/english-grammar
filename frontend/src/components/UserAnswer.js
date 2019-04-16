@@ -68,6 +68,19 @@ class UserAnswer extends Component {
       event.preventDefault();
       this.props.handleCheck(this.state.value);
       this.setState({ isVisible: !this.state.isVisible })
+
+      if (this.state.value === this.props.english) {
+        let allGoodAnswers = JSON.parse(window.localStorage.getItem('allExamples')) || this.props.examples;
+
+        let topic = allGoodAnswers.find(topic => topic.id === this.props.id);
+        topic.examples.push(this.props.sentenceId);
+
+        window.localStorage.setItem('allExamples', JSON.stringify(allGoodAnswers));
+
+        this.props.refreshPage(false);
+        this.props.handleCheck('');
+        this.props.fetchExamples();
+      }
     }
   }
 
