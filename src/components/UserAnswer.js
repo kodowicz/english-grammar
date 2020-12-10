@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const UserAnswer = ({ sentence }) => {
+const UserAnswer = ({
+  sentence,
+  checkSolution
+}) => {
   const [value, setValue] = useState("");
   const [rows, setRows] = useState(1);
   const minRows = 1;
@@ -10,6 +13,12 @@ const UserAnswer = ({ sentence }) => {
     const elementRows = resizeTextarea(event, minRows, lineHeight);
     setValue(event.target.value);
     setRows(elementRows);
+  }
+
+  function handleCheck(event) {
+    event.preventDefault();
+
+    if (value) checkSolution(value);
   }
 
   function resizeTextarea(event, minRows, lineHeight) {
@@ -35,7 +44,7 @@ const UserAnswer = ({ sentence }) => {
         lang="en"
         placeholder="type transcription"
       />
-      <button>check</button>
+      <button onClick={handleCheck}>check</button>
     </form>
   );
 };

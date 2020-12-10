@@ -2,17 +2,30 @@ import React, { useState, useEffect } from "react";
 import UserAnswer from "./UserAnswer";
 import Solution from "./Solution";
 
-const Task = () => {
-  const [sentence, setSentence] = useState({
-    polish: "polish sentence",
-    english: "english sentence"
-  });
-  const userAnswer = false;
+const Task = ({
+  sentences,
+  userAnswer,
+  checkSolution
+}) => {
+  const [sentence, setSentence] = useState(null);
 
-  return (
+
+  useEffect(() => {
+    setSentence(getSentence(sentences));
+  }, []);
+
+  function getSentence(sentences) {
+    const index = Math.floor(Math.random() * sentences.length);
+    const sentence = sentences[index];
+
+    return sentence;
+  }
+
+  return sentence ? (
     <>
       <UserAnswer
         sentence={sentence}
+        checkSolution={checkSolution}
       />
       { userAnswer && (
         <Solution
@@ -21,7 +34,9 @@ const Task = () => {
         />
       )}
     </>
+  ) : (
+    <></>
   );
-}
+};
 
 export default Task;
