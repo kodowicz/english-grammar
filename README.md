@@ -1,33 +1,30 @@
 # Sentences 📝
 
-## Introduction
-This application was created for practice English grammar. All sentences are taken from a book *[Grama To Nie Drama](https://altenberg.pl/arlena/)* written by Arlena Witt. I love this book but paper is not indestructible so that's why this application has been created. I want to share this app with people that also learn English using this book.
+
+This application was created for practicing English grammar. The application was inspired by a book *[Grama To Nie Drama](https://altenberg.pl/arlena/)* written by Arlena Witt. I love this book but paper is not indestructible so that's why this application has been created. Available API represents only basic set of sentences.
+
+<br />
+
+To try this application check out [this link](https://english-sentences.web.app). If you want to use the code
+for your own purpose you need to create firebase project and update firebase config in `src/config/firebase.js`.
 
 ## Installation
 ```
   git clone https://github.com/kodowicz/sentences.git
-  cd backend
-  nodemon server
-
-  cd frontend
+  npm install
+  firebase init
   npm start
 ```
 
-## Purposes
-- [ ] create a dynamic app by React
-- [ ] follow RWD idea
-- [x] create own API
-- [x] manage the data by backend
-
 ## Built with
 This project was created using:
-+ React.js
-+ styled-components
++ React (hooks)
 + Redux
-+ Redux Thunk
-+ Express.js
++ Firebase
++ Styled Components
++ PWA
 
+## License
+Under license (MIT, Apache etc)
 
-## Warning!
-
-This web page is **not finished** and it is still in development. If something doesn't work properly or does not look fine, don't worry. I'm going to fix that :sunglasses:
+MIT © 2020 Anna Kotowicz
