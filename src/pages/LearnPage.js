@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as firebase from "firebase/app";
-import { checkSolution } from "../store/actions/index";
+import {
+  checkSolution,
+  cleanSolution,
+  checkTask,
+  startTask
+} from "../store/actions/index";
 
 import Task from "../components/Task";
 
@@ -39,12 +44,16 @@ const LearnPage = ({ match }) => {
   const [chapter, setChapter] = useState("");
   const [sentences, loading, error] = useFetchSentences(chapter);
 
-  const { userAnswer } = useSelector(state => ({
-    userAnswer: state.task.userAnswer
+  const { isAnswered, isChecked } = useSelector(state => ({
+    isAnswered: state.task.isAnswered,
+    isChecked: state.task.taskChecked
   }));
 
   const dispatch = useDispatch();
-  const setCheckSolution = state => dispatch(checkSolution(state));
+  const setCheckSolution = () => dispatch(checkSolution());
+  const setCleanSolution = () => dispatch(cleanSolution());
+  const setStartTask = () => dispatch(startTask());
+  const setCheckTask = () => dispatch(checkTask());
 
   useEffect(
     () => {
@@ -58,8 +67,12 @@ const LearnPage = ({ match }) => {
   ) : (
     <Task
       sentences={sentences}
-      userAnswer={userAnswer}
+      isAnswered={isAnswered}
+      isChecked={isChecked}
       checkSolution={setCheckSolution}
+      cleanSolution={setCleanSolution}
+      startTask={setStartTask}
+      checkTask={setCheckTask}
     />
   );
 };

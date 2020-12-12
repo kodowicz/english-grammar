@@ -4,15 +4,28 @@ import Solution from "./Solution";
 
 const Task = ({
   sentences,
-  userAnswer,
-  checkSolution
+  isAnswered,
+  isChecked,
+  checkSolution,
+  cleanSolution,
+  startTask,
+  checkTask,
 }) => {
   const [sentence, setSentence] = useState(null);
-
 
   useEffect(() => {
     setSentence(getSentence(sentences));
   }, []);
+
+  useEffect(
+    () => {
+      if (isChecked) {
+        const sentence = getSentence(sentences);
+        setSentence(sentence);
+      }
+    },
+    [isChecked]
+  );
 
   function getSentence(sentences) {
     const index = Math.floor(Math.random() * sentences.length);
@@ -25,12 +38,17 @@ const Task = ({
     <>
       <UserAnswer
         sentence={sentence}
+        isAnswered={isAnswered}
+        isChecked={isChecked}
+        startTask={startTask}
+        cleanSolution={cleanSolution}
         checkSolution={checkSolution}
       />
-      { userAnswer && (
+      { isAnswered && (
         <Solution
-          userAnswer={userAnswer}
+          isAnswered={isAnswered}
           correctAnswer={sentence.english}
+          checkTask={checkTask}
         />
       )}
     </>

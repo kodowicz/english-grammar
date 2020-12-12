@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-const Solution = ({ userAnswer, correctAnswer }) => {
+const Solution = ({ userAnswer, correctAnswer, checkTask }) => {
 
   function handleConfirm(event) {
     event.preventDefault();
+    checkTask()
   }
 
   return (

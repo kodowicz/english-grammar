@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 
 const taskState = {
-  userAnswer: ""
+  isAnswered: "",
+  taskChecked: false
 };
 
 const taskReducer = (state = taskState, action) => {
@@ -9,9 +10,26 @@ const taskReducer = (state = taskState, action) => {
     case "CHECK_SOLUTION":
       return {
         ...state,
-        userAnswer: action.payload
+        isAnswered: true
       };
-      
+
+    case "CLEAN_SOLUTION":
+      return {
+        ...state,
+        isAnswered: false
+      };
+
+    case "START_TASK":
+      return {
+        ...state,
+        taskChecked: false
+      };
+    case "CHECK_TASK":
+      return {
+        ...state,
+        taskChecked: true
+      };
+
     default:
       return state;
   }
