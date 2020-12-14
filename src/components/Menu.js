@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import * as firebase from "firebase/app";
-import MenuList from "../components/MenuList";
 
-function compare(a, b) {
-  const termA = a.chapterId;
-  const termB = b.chapterId;
+import MenuList from "../components/MenuList";
+import { colors } from "../assets/styles";
+
+const compare = (byWhat) => (a, b) => {
+  const termA = a[byWhat];
+  const termB = b[byWhat];
   let comparison = 0;
 
   if (termA > termB) {
@@ -32,7 +34,7 @@ function useFetchChapters() {
         });
       })
       .then(() => {
-        chapters.sort(compare);
+        chapters.sort(compare("chapterId"));
         setChapters(chapters);
         setLoading(false);
       })
@@ -55,8 +57,8 @@ const Menu = () => {
 };
 
 const Nav = styled.nav`
-  background: #111111;
-  color: #FFFFFF;
+  background: ${colors.black};
+  color: ${colors.white};
   position: absolute;
   top: 0;
   left: 0;

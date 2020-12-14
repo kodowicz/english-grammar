@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
 import UserAnswer from "./UserAnswer";
 import Solution from "./Solution";
 
@@ -35,7 +37,7 @@ const Task = ({
   }
 
   return sentence ? (
-    <>
+    <Wrapper>
       <UserAnswer
         sentence={sentence}
         isAnswered={isAnswered}
@@ -51,10 +53,21 @@ const Task = ({
           checkTask={checkTask}
         />
       )}
-    </>
+    </Wrapper>
   ) : (
     <></>
   );
 };
+
+const Wrapper = styled.div`
+  padding: 7rem 2rem 0;
+
+  @media (min-width: 768px) {
+    width: 50vw;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding-top: 10rem;
+  }
+`;
 
 export default Task;

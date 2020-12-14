@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as LinkElement } from "react-router-dom";
 import styled from "styled-components";
+import { fonts, colors } from "../assets/styles";
 
 const MenuList = ({ chapters }) => (
   <List>
@@ -21,14 +22,14 @@ const List = styled.ol`
 `;
 
 const ListItem = styled.li`
+  color: ${colors.white};
   margin: 1.5rem 0;
   list-style: none;
-  color: #FFFFFF;
 `;
 
 const Link = styled(LinkElement)`
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
+  font-weight: ${fonts.medium};
+  font-family: ${fonts.minorFamily};
   color: inherit;
   display: grid;
   grid-template-columns: 3.5rem 1fr;
@@ -48,7 +49,7 @@ const Link = styled(LinkElement)`
 `;
 
 const Counter = styled.span`
-  font-weight: bold;
+  font-weight: ${fonts.bold};
   color: inherit;
   font-size: 1.8rem;
   justify-self: center;
