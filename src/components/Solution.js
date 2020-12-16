@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+
 import { fonts, colors } from "../assets/styles";
+import { fadeIn, fadeOut } from "../assets/keyframes";
 
 const Solution = ({ isAnswered, correctAnswer, checkTask }) => {
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   function handleConfirm(event) {
     event.preventDefault();
-    checkTask()
+    setIsConfirmed(true);
+  }
+
+  function handleAnimationEnd(event) {
+    if (event.animationName === fadeOut.name) {
+      checkTask();
+    }
   }
 
   return (
-    <Wrapper isVisible={isAnswered}>
+    <Wrapper
+      isVisible={isAnswered}
+      isConfirmed={isConfirmed}
+      onAnimationEnd={handleAnimationEnd}
+    >
       <Text>original sentence:</Text>
       <English>{correctAnswer}</English>
       <ButtonWrapper>
@@ -28,6 +41,15 @@ const Wrapper = styled.div`
         `
       : css`
           visibility: hidden;
+        `};
+
+  ${({ isConfirmed }) =>
+    isConfirmed
+      ? css`
+          animation: ${fadeOut} 0.5s both;
+        `
+      : css`
+          animation: ${fadeIn("-5vh", "0")} 0.5s 0.3s both;
         `};
 `;
 

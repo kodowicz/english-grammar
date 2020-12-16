@@ -13,3 +13,8 @@ export const checkTask = () => ({
 export const startTask = () => ({
   type: "START_TASK"
 });
+
+export const completeTask = payload => ({
+  type: "COMPLETE_TASK",
+  payload: payload
+});

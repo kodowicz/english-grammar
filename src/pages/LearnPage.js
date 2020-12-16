@@ -4,8 +4,9 @@ import * as firebase from "firebase/app";
 import {
   checkSolution,
   cleanSolution,
+  startTask,
   checkTask,
-  startTask
+  completeTask
 } from "../store/actions/index";
 
 import Task from "../components/Task";
@@ -44,9 +45,10 @@ const LearnPage = ({ match }) => {
   const [chapter, setChapter] = useState("");
   const [sentences, loading, error] = useFetchSentences(chapter);
 
-  const { isAnswered, isChecked } = useSelector(state => ({
+  const { isAnswered, isChecked, isCompleted } = useSelector(state => ({
     isAnswered: state.task.isAnswered,
-    isChecked: state.task.taskChecked
+    isChecked: state.task.taskChecked,
+    isCompleted: state.task.taskCompleted
   }));
 
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ const LearnPage = ({ match }) => {
   const setCleanSolution = () => dispatch(cleanSolution());
   const setStartTask = () => dispatch(startTask());
   const setCheckTask = () => dispatch(checkTask());
+  const setCompleteTask = state => dispatch(completeTask(state));
 
   useEffect(
     () => {
@@ -62,6 +65,11 @@ const LearnPage = ({ match }) => {
     [match]
   );
 
+  useEffect(() => {
+    // if chapter changed and task was open
+    setCleanSolution();
+  }, []);
+
   return loading ? (
     <></>
   ) : (
@@ -69,10 +77,12 @@ const LearnPage = ({ match }) => {
       sentences={sentences}
       isAnswered={isAnswered}
       isChecked={isChecked}
+      isCompleted={isCompleted}
       checkSolution={setCheckSolution}
       cleanSolution={setCleanSolution}
       startTask={setStartTask}
       checkTask={setCheckTask}
+      completeTask={setCompleteTask}
     />
   );
 };

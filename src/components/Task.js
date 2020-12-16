@@ -8,10 +8,12 @@ const Task = ({
   sentences,
   isAnswered,
   isChecked,
+  isCompleted,
   checkSolution,
   cleanSolution,
   startTask,
   checkTask,
+  completeTask
 }) => {
   const [sentence, setSentence] = useState(null);
 
@@ -21,12 +23,12 @@ const Task = ({
 
   useEffect(
     () => {
-      if (isChecked) {
+      if (isCompleted) {
         const sentence = getSentence(sentences);
         setSentence(sentence);
       }
     },
-    [isChecked]
+    [isCompleted]
   );
 
   function getSentence(sentences) {
@@ -42,9 +44,11 @@ const Task = ({
         sentence={sentence}
         isAnswered={isAnswered}
         isChecked={isChecked}
+        isCompleted={isCompleted}
         startTask={startTask}
         cleanSolution={cleanSolution}
         checkSolution={checkSolution}
+        completeTask={completeTask}
       />
       { isAnswered && (
         <Solution

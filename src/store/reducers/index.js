@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 
 const taskState = {
   isAnswered: "",
-  taskChecked: false
+  taskChecked: false,
+  taskCompleted: false
 };
 
 const taskReducer = (state = taskState, action) => {
@@ -28,6 +29,12 @@ const taskReducer = (state = taskState, action) => {
       return {
         ...state,
         taskChecked: true
+      };
+
+    case "COMPLETE_TASK":
+      return {
+        ...state,
+        taskCompleted: action.payload
       };
 
     default:

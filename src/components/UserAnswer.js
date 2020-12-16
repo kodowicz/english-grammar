@@ -1,33 +1,45 @@
-import React, { useState, useEffect } from "react";
-import styled, { css, keyframes  } from "styled-components";
+import React, { useState, useEffect, useRef } from "react";
+import styled, { css } from "styled-components";
+
 import { colors, fonts } from "../assets/styles";
+import { fadeIn, moveUp, fadeOut } from "../assets/keyframes";
 
 const UserAnswer = ({
   sentence,
   isAnswered,
   isChecked,
+  isCompleted,
   startTask,
-  completeTask,
   checkSolution,
-  cleanSolution
+  cleanSolution,
+  completeTask
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [value, setValue] = useState("");
   const [rows, setRows] = useState(1);
+  const inputRef = useRef();
   const minRows = 1;
   const lineHeight = 18;
 
   useEffect(
     () => {
-      if (isChecked) {
+      if (isCompleted) {
+        completeTask(false);
         setIsVisible(true);
-        startTask();
         cleanSolution();
+        startTask();
         setValue("");
         setRows(1);
       }
     },
-    [isChecked]
+    [isCompleted]
+  );
+
+  useEffect(
+    () => {
+      if (!isAnswered) inputRef.current.focus();
+    },
+    [isAnswered]
   );
 
   function handleChange(event) {
@@ -45,6 +57,12 @@ const UserAnswer = ({
     };
   }
 
+  function handleAnimation(event) {
+    if (isChecked && event.animationName === fadeOut.name) {
+      completeTask(true);
+    }
+  }
+
   function resizeTextarea(event, minRows, lineHeight) {
     const previousRows = event.target.rows;
     event.target.rows = minRows;
@@ -59,12 +77,19 @@ const UserAnswer = ({
   }
 
   return (
-    <Form>
+    <Form
+      isChecked={isChecked}
+      isAnswered={isAnswered}
+      isCompleted={isCompleted}
+      onAnimationEnd={handleAnimation}
+    >
       <Polish>{sentence.polish}</Polish>
       <Textarea
         rows={rows}
         value={value}
+        ref={inputRef}
         onChange={handleChange}
+        autoFocus
         lang="en"
         placeholder="type transcription"
       />
@@ -78,7 +103,26 @@ const Form = styled.form`
   translation: transform 0.3s ease-out;
   z-index: 1;
   position: relative;
+  opacity: 0;
   padding: 1px 0;
+
+  ${({ isChecked, isAnswered, isCompleted }) => {
+
+    if (!isCompleted && !isAnswered)
+      return css`
+        animation: ${fadeIn("20vh", "15vh")} 1s both;
+      `;
+
+    else if (isAnswered && !isChecked)
+      return css`
+        animation: ${moveUp} 1s both;
+      `;
+
+    else if (isAnswered && isChecked)
+      return css`
+        animation: ${fadeOut} 0.7s;
+      `;
+  }}};
 `;
 
 const Polish = styled.h1`
