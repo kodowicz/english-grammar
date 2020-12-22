@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 
-import { colors, fonts } from "../assets/styles";
+import { Button, colors, fonts } from "../assets/styles";
 import { fadeIn, moveUp, fadeOut } from "../assets/keyframes";
 
 const UserAnswer = ({
@@ -41,6 +41,11 @@ const UserAnswer = ({
     },
     [isAnswered]
   );
+
+  function skipTask(event) {
+    event.preventDefault();
+    completeTask(true);
+  };
 
   function handleChange(event) {
     const elementRows = resizeTextarea(event, minRows, lineHeight);
@@ -84,15 +89,18 @@ const UserAnswer = ({
       onAnimationEnd={handleAnimation}
     >
       <Polish>{sentence.polish}</Polish>
-      <Textarea
-        rows={rows}
-        value={value}
-        ref={inputRef}
-        onChange={handleChange}
-        autoFocus
-        lang="en"
-        placeholder="type transcription"
-      />
+      <Wrapper>
+        <Textarea
+          autoFocus
+          ref={inputRef}
+          rows={rows}
+          value={value}
+          onChange={handleChange}
+          lang="en"
+          placeholder="type transcription"
+        />
+        <SkipButton onClick={skipTask}>skip</SkipButton>
+      </Wrapper>
       <Button isVisible={isVisible} onClick={handleCheck}>check</Button>
     </Form>
   );
@@ -101,9 +109,9 @@ const UserAnswer = ({
 const Form = styled.form`
   background: ${colors.white};
   translation: transform 0.3s ease-out;
+  opacity: 0;
   z-index: 1;
   position: relative;
-  opacity: 0;
   padding: 1px 0;
 
   ${({ isChecked, isAnswered, isCompleted }) => {
@@ -135,10 +143,18 @@ const Polish = styled.h1`
   }
 `;
 
+const Wrapper = styled.div`
+  margin: 3rem auto;
+
+  @media (min-width: 768px) {
+    margin: 4rem auto;
+  }
+`;
+
 const Textarea = styled.textarea`
-  border: 1px solid ${colors.lightGray};
   font-family: ${fonts.minorFamily};
   color: ${colors.black};
+  border: 1px solid ${colors.lightGray};
   appearance: none;
   width: 100%;
   height: auto;
@@ -147,7 +163,6 @@ const Textarea = styled.textarea`
   box-sizing: border-box;
   border-radius: 2rem;
   padding: 8px 2rem;
-  margin: 3rem auto;
   outline: none;
   overflow: hidden;
   resize: none;
@@ -159,28 +174,16 @@ const Textarea = styled.textarea`
   &::placeholder {
     color: ${colors.lightGray};
   }
-
-  @media (min-width: 768px) {
-    margin: 4rem auto;
-  }
 `;
 
-const Button = styled.button`
-  display: ${({ isVisible }) => isVisible ? "block" : "none"};
-  box-shadow: 5px 5px 15px -5px ${colors.lightGray};
+const SkipButton = styled.button`
   font-family: ${fonts.minorFamily};
-  background: ${colors.black};
-  color: ${colors.white};
-  margin: 0 auto;
-  padding: 1rem 4rem;
-  font-size: 1.4rem;
+  color: ${colors.black};
+  margin: 0.5rem 0.5rem 0.5rem auto;
+  background: none;
+  padding: 0.5rem;
+  display: block;
   border: none;
-  border-radius: 5rem;
-
-  @media (min-width: 768px) {
-    padding: 1rem 5rem;
-    font-size: 1.6rem;
-  }
 `;
 
 export default UserAnswer;

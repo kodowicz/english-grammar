@@ -48,3 +48,21 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: thin;
   }
 `;
+
+export const Button = styled.button`
+  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
+  box-shadow: 5px 5px 15px -5px ${colors.lightGray};
+  font-family: ${fonts.minorFamily};
+  background: ${colors.black};
+  color: ${colors.white};
+  margin: 0 auto;
+  padding: 1rem 4rem;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5rem;
+
+  @media (min-width: 768px) {
+    padding: 1rem 5rem;
+    font-size: 1.6rem;
+  }
+`;
