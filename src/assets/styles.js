@@ -2,7 +2,7 @@ import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const colors = {
-  scrollThumb: "#292929",
+  scrollThumb: "#303030",
   scrollTrack: "#cacaca",
   white: "#FFFFFF",
   black: "#111111",

@@ -1,14 +1,15 @@
 import React from "react";
 import { Link as LinkElement } from "react-router-dom";
 import styled from "styled-components";
+
 import { fonts, colors } from "../assets/styles";
 
 const MenuList = ({ chapters }) => (
   <List>
-    {chapters.map(chapter => (
+    { chapters.map(chapter => (
       <ListItem key={chapter.id}>
         <Link to={`/chapter/${chapter.id}`}>
-          <Counter>{chapter.chapterId}.</Counter>
+          <Counter>{chapter.chapterId}{"."}</Counter>
           <Anchor>{chapter.topic}</Anchor>
         </Link>
       </ListItem>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import { fonts, colors } from "../assets/styles";
+import { Button, fonts } from "../assets/styles";
 import { fadeIn, fadeOut } from "../assets/keyframes";
 
 const Solution = ({ isAnswered, correctAnswer, checkTask }) => {
@@ -27,7 +27,7 @@ const Solution = ({ isAnswered, correctAnswer, checkTask }) => {
       <Text>original sentence:</Text>
       <English>{correctAnswer}</English>
       <ButtonWrapper>
-        <Button onClick={handleConfirm}>next</Button>
+        <Button isVisible onClick={handleConfirm}>next</Button>
       </ButtonWrapper>
     </Wrapper>
   );
@@ -86,24 +86,6 @@ const ButtonWrapper = styled.div`
   @media (min-width: 768px) {
     margin: 4rem auto;
     max-width: 40rem;
-  }
-`;
-
-const Button = styled.button`
-  box-shadow: 5px 5px 15px -5px ${colors.lightGray};
-  font-family: ${fonts.minorFamily};
-  background: ${colors.black};
-  color: ${colors.white};
-  display: block;
-  margin: 0 auto;
-  padding: 1rem 4rem;
-  font-size: 1.4rem;
-  border: none;
-  border-radius: 5rem;
-
-  @media (min-width: 768px) {
-    padding: 1rem 5rem;
-    font-size: 1.6rem;
   }
 `;
 

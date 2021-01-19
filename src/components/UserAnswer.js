@@ -90,18 +90,20 @@ const UserAnswer = ({
     >
       <Polish>{sentence.polish}</Polish>
       <Wrapper>
+        <SkipButton onClick={skipTask}>skip</SkipButton>
         <Textarea
           autoFocus
-          ref={inputRef}
           rows={rows}
           value={value}
+          ref={inputRef}
           onChange={handleChange}
           lang="en"
           placeholder="type transcription"
         />
-        <SkipButton onClick={skipTask}>skip</SkipButton>
       </Wrapper>
-      <Button isVisible={isVisible} onClick={handleCheck}>check</Button>
+      <Button isVisible={isVisible} onClick={handleCheck}>
+        check
+      </Button>
     </Form>
   );
 };
