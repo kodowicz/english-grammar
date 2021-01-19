@@ -16,25 +16,33 @@ const Task = ({
   completeTask
 }) => {
   const [sentence, setSentence] = useState(null);
+  const [lastSentence, setLastSentence] = useState(null);
 
   useEffect(() => {
-    setSentence(getSentence(sentences));
+    const sentence = getSentence(sentences, lastSentence);
+    setLastSentence(sentence.sentenceId);
+    setSentence(sentence);
   }, []);
 
   useEffect(
     () => {
       if (isCompleted) {
-        const sentence = getSentence(sentences);
+        const sentence = getSentence(sentences, lastSentence);
+        setLastSentence(sentence.sentenceId);
         setSentence(sentence);
       }
     },
     [isCompleted]
   );
 
-  function getSentence(sentences) {
-    const index = Math.floor(Math.random() * sentences.length);
-    const sentence = sentences[index];
+  function getSentence(sentences, lastSentence) {
+    let index = Math.floor(Math.random() * sentences.length);
 
+    while (index === lastSentence) {
+      index = Math.floor(Math.random() * sentences.length);
+    }
+
+    const sentence = sentences.find(el => el.sentenceId === index);
     return sentence;
   }
 
