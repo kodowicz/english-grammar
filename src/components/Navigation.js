@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link as LinkElement } from "react-router-dom";
 import styled from "styled-components";
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 const Navigation = ({ location }) => {
   const [isHome, setHome] = useState(true);
@@ -14,46 +15,67 @@ const Navigation = ({ location }) => {
     [location]
   );
 
-  return isHome ? (
-    <></>
-  ) : (
-    <Link to="/">
-      <Svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 100 100"
-      >
-        <Path d="M5,50 L95,50 M3,50 L19,34 M3,50 L19,66" />
-      </Svg>
-    </Link>
+  return (
+    <Nav>
+      <HomeButton />
+      <ThemeSwitcher isHome={isHome} />
+    </Nav>
   );
 };
 
-const Link = styled(LinkElement)`
+const HomeButton = () => (
+  <Link aria-role="button" to="/">
+    <Svg viewBox="0 0 165 95" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <Line x1="4" y1="4" x2="121" y2="4" strokeWidth="8" strokeLinecap="round"/>
+        <Line x1="4" y1="47" x2="121" y2="47" strokeWidth="8" strokeLinecap="round"/>
+        <Line x1="4" y1="91" x2="121" y2="91" strokeWidth="8" strokeLinecap="round"/>
+      </g>
+    </Svg>
+  </Link>
+);
+
+const Nav = styled.div`
   position: fixed;
-  top: 2.5rem;
-  left: 2.5rem;
+  width: 100%;
+  z-index: 3;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  @media(min-width: 678px) {
+    padding: 2.5rem 4rem;
+  }
+`;
+
+const Link = styled(LinkElement)`
   background: none;
   border: none;
-  z-index: 3;
+  display: block;
+  padding: 0.5rem;
 
-  @media (min-width: 768px) {
-    top: 4rem;
-    left: 4rem;
+  &:hover, &:active, &:focus {
+    line {
+      &:first-child {
+        transform: translateX(24%);
+      }
+
+      &:last-child {
+        transform: translateX(24%);
+      }
+    }
   }
 `;
 
 const Svg = styled.svg`
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.5rem;
 `;
 
-const Path = styled.path`
-  stroke: #111;
-  fill: none;
-  stroke-width: 7;
-  stroke-linecap: round;
+const Line = styled.line`
+  stroke: ${({ theme }) => theme.black};
+  transition: transform 0.3s;
 `;
 
 export default Navigation;

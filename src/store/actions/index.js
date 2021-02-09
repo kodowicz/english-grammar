@@ -1,3 +1,8 @@
+export const changeTheme = payload => ({
+  type: "CHANGE_THEME",
+  payload
+});
+
 export const checkSolution = () => ({
   type: "CHECK_SOLUTION"
 });
@@ -16,5 +21,5 @@ export const startTask = () => ({
 
 export const completeTask = payload => ({
   type: "COMPLETE_TASK",
-  payload: payload
+  payload
 });

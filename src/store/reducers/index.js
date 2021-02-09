@@ -6,6 +6,24 @@ const taskState = {
   taskCompleted: false
 };
 
+const themeState = {
+  isLight: false
+}
+
+const themeReducer = (state = themeState, action) => {
+  switch (action.type) {
+    case "CHANGE_THEME":
+      return {
+        ...state,
+        isLight: action.payload
+      };
+
+    default:
+      return state;
+  }
+}
+
+
 const taskReducer = (state = taskState, action) => {
   switch (action.type) {
     case "CHECK_SOLUTION":
@@ -41,6 +59,8 @@ const taskReducer = (state = taskState, action) => {
       return state;
   }
 }
+
 export default combineReducers({
-  task: taskReducer
+  task: taskReducer,
+  theme: themeReducer
 });
