@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import { useFetchChapters } from "../hooks";
 
 import MenuList from "../components/MenuList";
-import { colors } from "../assets/styles";
 
 const Menu = () => {
   const [chapters, loading, error] = useFetchChapters();
@@ -18,8 +17,8 @@ const Menu = () => {
 };
 
 const Nav = styled.nav`
-  background: ${colors.black};
-  color: ${colors.white};
+  background: ${({ theme }) => theme.white};
+  transition: background 0.5s;
   position: absolute;
   top: 0;
   left: 0;

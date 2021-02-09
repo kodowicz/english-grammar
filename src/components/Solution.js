@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import { Button, fonts } from "../assets/styles";
+import { Button } from "../assets/styles";
 import { fadeIn, fadeOut } from "../assets/keyframes";
 
 const Solution = ({ isAnswered, correctAnswer, checkTask }) => {
@@ -54,8 +54,8 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.p`
-  font-family: ${fonts.minorFamily};
-  font-weight: ${fonts.medium};
+  font-family: ${({ theme }) => theme.minorFamily};
+  font-weight: ${({ theme }) => theme.medium};
   font-size: 1.6rem;
   text-align: center;
   margin-top: 6rem;
@@ -67,7 +67,7 @@ const Text = styled.p`
 `;
 
 const English = styled.h2`
-  font-weight: ${fonts.bold};
+  font-weight: ${({ theme }) => theme.bold};
   font-size: 2rem;
   text-align: center;
   margin: 0;

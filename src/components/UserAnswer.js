@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 
-import { Button, colors, fonts } from "../assets/styles";
+import { Button } from "../assets/styles";
 import { fadeIn, moveUp, fadeOut } from "../assets/keyframes";
 
 const UserAnswer = ({
@@ -109,7 +109,6 @@ const UserAnswer = ({
 };
 
 const Form = styled.form`
-  background: ${colors.white};
   translation: transform 0.3s ease-out;
   opacity: 0;
   z-index: 1;
@@ -136,7 +135,7 @@ const Form = styled.form`
 `;
 
 const Polish = styled.h1`
-  font-weight: ${fonts.bold};
+  font-weight: ${({ theme }) => theme.bold};
   font-size: 2.2rem;
   text-align: center;
 
@@ -154,9 +153,11 @@ const Wrapper = styled.div`
 `;
 
 const Textarea = styled.textarea`
-  font-family: ${fonts.minorFamily};
-  color: ${colors.black};
-  border: 1px solid ${colors.lightGray};
+  border: 1px solid ${({ theme }) => theme.lightGray};
+  font-family: ${({ theme }) => theme.minorFamily};
+  background: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.black};
+  transition: background 0.5s, color 0.5s;
   appearance: none;
   width: 100%;
   height: auto;
@@ -170,17 +171,17 @@ const Textarea = styled.textarea`
   resize: none;
 
   &:focus {
-    border: 1px solid ${colors.black};
+    border: 1px solid ${({ theme }) => theme.black};
   }
 
   &::placeholder {
-    color: ${colors.lightGray};
+    color: ${({ theme }) => theme.lightGray};
   }
 `;
 
 const SkipButton = styled.button`
-  font-family: ${fonts.minorFamily};
-  color: ${colors.black};
+  font-family: ${({ theme }) => theme.minorFamily};
+  color: ${({ theme }) => theme.black};
   margin: 0.5rem 0.5rem 0.5rem auto;
   background: none;
   padding: 0.5rem;
