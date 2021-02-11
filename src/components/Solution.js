@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import { useDispatch } from "react-redux";
+import { checkTask } from "../store/actions";
 
 import { Button } from "../assets/styles";
-import { fadeIn, fadeOut } from "../assets/keyframes";
+import { emerge, fadeaway } from "../assets/keyframes";
 
-const Solution = ({ isAnswered, correctAnswer, checkTask }) => {
+const Solution = ({ isAnswered, correctAnswer }) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
+
+  const dispatch = useDispatch();
+  const setCheckTask = (state) => dispatch(checkTask(state));
 
   function handleConfirm(event) {
     event.preventDefault();
@@ -13,8 +18,8 @@ const Solution = ({ isAnswered, correctAnswer, checkTask }) => {
   }
 
   function handleAnimationEnd(event) {
-    if (event.animationName === fadeOut.name) {
-      checkTask();
+    if (event.animationName === fadeaway.name) {
+      setCheckTask();
     }
   }
 
@@ -46,10 +51,10 @@ const Wrapper = styled.div`
   ${({ isConfirmed }) =>
     isConfirmed
       ? css`
-          animation: ${fadeOut} 0.5s both;
+          animation: ${fadeaway} 0.5s both;
         `
       : css`
-          animation: ${fadeIn("-5vh", "0")} 0.5s 0.3s both;
+          animation: ${emerge("-5vh", "0")} 0.5s 0.3s both;
         `};
 `;
 

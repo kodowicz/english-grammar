@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as LinkElement } from "react-router-dom";
 import styled from "styled-components";
+import { fadein } from "../assets/keyframes";
 
 const MenuList = ({ chapters }) => (
   <List>
@@ -29,6 +30,7 @@ const ListItem = styled.li`
 const Link = styled(LinkElement)`
   font-weight: ${({ theme }) => theme.medium};
   font-family: ${({ theme }) => theme.minorFamily};
+  animation: ${fadein} 1s forwards;
   color: inherit;
   display: grid;
   grid-template-columns: 3.5rem 1fr;
@@ -36,7 +38,7 @@ const Link = styled(LinkElement)`
   text-decoration: none;
   transition: transform 0.3s ease-out;
   width: fit-content;
-  outline: none;  
+  outline: none;
 
   &:hover,
   &:focus {

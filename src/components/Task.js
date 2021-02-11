@@ -8,12 +8,7 @@ const Task = ({
   sentences,
   isAnswered,
   isChecked,
-  isCompleted,
-  checkSolution,
-  cleanSolution,
-  startTask,
-  checkTask,
-  completeTask
+  isCompleted
 }) => {
   const [sentence, setSentence] = useState(null);
   const [lastSentence, setLastSentence] = useState(null);
@@ -53,16 +48,11 @@ const Task = ({
         isAnswered={isAnswered}
         isChecked={isChecked}
         isCompleted={isCompleted}
-        startTask={startTask}
-        cleanSolution={cleanSolution}
-        checkSolution={checkSolution}
-        completeTask={completeTask}
       />
       { isAnswered && (
         <Solution
           isAnswered={isAnswered}
           correctAnswer={sentence.english}
-          checkTask={checkTask}
         />
       )}
     </Wrapper>
@@ -71,7 +61,7 @@ const Task = ({
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   padding: 7rem 2rem 0;
 
   @media (min-width: 768px) {

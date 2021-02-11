@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as firebase from "firebase/app";
 
 const compare = (byWhat) => (a, b) => {
@@ -15,17 +15,19 @@ const compare = (byWhat) => (a, b) => {
 }
 
 export function useFetchChapters() {
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [chapters, setChapters] = useState([]);
+  const [ error, setError ] = useState(false);
+  const [ loading, setLoading ] = useState(true);
+  const [ chapters, setChapters ] = useState([]);
 
   useEffect(() => {
+    const chapters = [];
+
     firebase
       .firestore()
       .collection("chapters")
       .get()
       .then(snap => {
-        snap.docs.map(doc => {
+        snap.docs.forEach(doc => {
           chapters.push(doc.data());
         });
       })
@@ -37,13 +39,17 @@ export function useFetchChapters() {
       .catch(err => setError(err));
   }, []);
 
-  return [chapters, loading, error];
+  return {
+    chapters,
+    loading,
+    error
+  };
 }
 
 export function useFetchSentences(id) {
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [sentences, setSentences] = useState(null);
+  const [ error, setError ] = useState(false);
+  const [ loading, setLoading ] = useState(true);
+  const [ sentences, setSentences ] = useState(null);
 
   useEffect(
     () => {
@@ -67,5 +73,9 @@ export function useFetchSentences(id) {
     [id]
   );
 
-  return [sentences, loading, error];
+  return {
+    sentences,
+    loading,
+    error
+  };
 }

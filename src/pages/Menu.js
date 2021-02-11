@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import { useFetchChapters } from "../hooks";
 
 import MenuList from "../components/MenuList";
 
 const Menu = () => {
-  const [chapters, loading, error] = useFetchChapters();
+  const { chapters } = useFetchChapters();
 
   return (
     <Nav>

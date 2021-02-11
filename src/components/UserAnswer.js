@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
-
-import { Button } from "../assets/styles";
-import { fadeIn, moveUp, fadeOut } from "../assets/keyframes";
-
-const UserAnswer = ({
-  sentence,
-  isAnswered,
-  isChecked,
-  isCompleted,
+import { useDispatch } from "react-redux";
+import {
   startTask,
   checkSolution,
   cleanSolution,
   completeTask
-}) => {
+} from "../store/actions";
+
+import { Button } from "../assets/styles";
+import { emerge, moveup, fadeaway } from "../assets/keyframes";
+
+const UserAnswer = ({ sentence, isAnswered, isChecked, isCompleted }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [value, setValue] = useState("");
   const [rows, setRows] = useState(1);
@@ -21,13 +19,19 @@ const UserAnswer = ({
   const minRows = 1;
   const lineHeight = 18;
 
+  const dispatch = useDispatch();
+  const setStartTask = (state) => dispatch(startTask(state));
+  const setCheckSolution = (state) => dispatch(checkSolution(state));
+  const setCleanSolution = (state) => dispatch(cleanSolution(state));
+  const setCompleteTask = (state) => dispatch(completeTask(state));
+
   useEffect(
     () => {
       if (isCompleted) {
-        completeTask(false);
+        setCompleteTask(false);
         setIsVisible(true);
-        cleanSolution();
-        startTask();
+        setCleanSolution();
+        setStartTask();
         setValue("");
         setRows(1);
       }
@@ -44,7 +48,7 @@ const UserAnswer = ({
 
   function skipTask(event) {
     event.preventDefault();
-    completeTask(true);
+    setCompleteTask(true);
   };
 
   function handleChange(event) {
@@ -57,14 +61,14 @@ const UserAnswer = ({
     event.preventDefault();
 
     if (value) {
-      checkSolution(value);
+      setCheckSolution(value);
       setIsVisible(false);
     };
   }
 
   function handleAnimation(event) {
-    if (isChecked && event.animationName === fadeOut.name) {
-      completeTask(true);
+    if (isChecked && event.animationName === fadeaway.name) {
+      setCompleteTask(true);
     }
   }
 
@@ -88,7 +92,7 @@ const UserAnswer = ({
       isCompleted={isCompleted}
       onAnimationEnd={handleAnimation}
     >
-      <Polish>{sentence.polish}</Polish>
+      <Paragraph>{sentence.polish}</Paragraph>
       <Wrapper>
         <SkipButton onClick={skipTask}>skip</SkipButton>
         <Textarea
@@ -119,22 +123,22 @@ const Form = styled.form`
 
     if (!isCompleted && !isAnswered)
       return css`
-        animation: ${fadeIn("20vh", "15vh")} 1s both;
+        animation: ${emerge("20vh", "15vh")} 1s both;
       `;
 
     else if (isAnswered && !isChecked)
       return css`
-        animation: ${moveUp} 1s both;
+        animation: ${moveup} 1s both;
       `;
 
     else if (isAnswered && isChecked)
       return css`
-        animation: ${fadeOut} 0.7s;
+        animation: ${fadeaway} 0.7s;
       `;
   }}};
 `;
 
-const Polish = styled.h1`
+const Paragraph = styled.h1`
   font-weight: ${({ theme }) => theme.bold};
   font-size: 2.2rem;
   text-align: center;

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link as LinkElement } from "react-router-dom";
 import styled from "styled-components";
 import ThemeSwitcher from '../components/ThemeSwitcher';
 
-const Navigation = ({ location }) => {
+const Navigation = ({ history, location }) => {
   const [isHome, setHome] = useState(true);
-  const reg = /^\/$/;
 
   useEffect(
     () => {
+      const reg = /^\/$/;
       const isHome = reg.test(location.pathname);
       setHome(isHome);
     },
@@ -17,14 +16,14 @@ const Navigation = ({ location }) => {
 
   return (
     <Nav>
-      <HomeButton />
+      <HomeButton changeLocation={isHome ? history.goForward : history.goBack}/>
       <ThemeSwitcher isHome={isHome} />
     </Nav>
   );
 };
 
-const HomeButton = () => (
-  <Link aria-role="button" to="/">
+const HomeButton = ({ changeLocation }) => (
+  <Button onClick={() => changeLocation()}>
     <Svg viewBox="0 0 165 95" xmlns="http://www.w3.org/2000/svg">
       <g>
         <Line x1="4" y1="4" x2="121" y2="4" strokeWidth="8" strokeLinecap="round"/>
@@ -32,7 +31,7 @@ const HomeButton = () => (
         <Line x1="4" y1="91" x2="121" y2="91" strokeWidth="8" strokeLinecap="round"/>
       </g>
     </Svg>
-  </Link>
+  </Button>
 );
 
 const Nav = styled.div`
@@ -50,7 +49,7 @@ const Nav = styled.div`
   }
 `;
 
-const Link = styled(LinkElement)`
+const Button = styled.button`
   background: none;
   border: none;
   display: block;

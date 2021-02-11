@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import { keyframes } from "styled-components";
 
 export const sunrise = keyframes`
   from {
@@ -20,7 +20,17 @@ export const sunset = keyframes`
   }
 `;
 
-export const fadeIn =  (start, end) => keyframes`
+export const fadein = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+export const emerge = (start, end) => keyframes`
   from {
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     opacity: 0;
@@ -33,7 +43,7 @@ export const fadeIn =  (start, end) => keyframes`
   }
 `;
 
-export const moveUp = keyframes`
+export const moveup = keyframes`
   from {
     transform: translate3d(0, 15vh, 0);
     opacity: 1;
@@ -46,7 +56,7 @@ export const moveUp = keyframes`
   }
 `;
 
-export const fadeOut = keyframes`
+export const fadeaway = keyframes`
   from {
     opacity: 1;
     transform: translate3d(0, 0, 0);
