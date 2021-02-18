@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
-import { useFetchSentences } from "../hooks";
-import { cleanSolution } from "../store/actions/index";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import useFetchSentences from '../../hooks/useFetchSentences';
+import { cleanSolution } from '../../store/actions/index';
+import Task from './Task';
 
-import Task from "../components/Task";
-
-const LearnPage = ({ match }) => {
-  const [ chapter, setChapter ] = useState("");
+const Learn = () => {
+  const [ chapter, setChapter ] = useState('');
   const { sentences, loading, error } = useFetchSentences(chapter);
+  const params = useParams();
 
   const { isAnswered, isChecked, isCompleted } = useSelector(state => ({
     isAnswered: state.task.isAnswered,
@@ -21,13 +22,15 @@ const LearnPage = ({ match }) => {
 
   useEffect(
     () => {
-      setChapter(match.params.id);
+      setChapter(params.id);
     },
-    [match]
+    [params]
   );
 
   // if chapter changed and task was open
-  useEffect(() => setCleanSolution(), []);
+  useEffect(() => {
+    setCleanSolution()
+  }, []);
 
   if (error) return <Error>Coundn't load sentences. Please try again.</Error>;
   if (loading) return <></>;
@@ -56,4 +59,4 @@ const Error = styled.h1`
   }
 `;
 
-export default LearnPage;
+export default Learn;

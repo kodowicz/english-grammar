@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import UserAnswer from "./UserAnswer";
-import Solution from "./Solution";
+import UserAnswer from './UserAnswer';
+import Solution from './Solution';
 
 const Task = ({
   sentences,

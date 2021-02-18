@@ -1,14 +1,14 @@
-import React from "react";
-import { Link as LinkElement } from "react-router-dom";
-import styled from "styled-components";
-import { fadein } from "../assets/keyframes";
+import React from 'react';
+import { Link as LinkElement } from 'react-router-dom';
+import styled from 'styled-components';
+import { fadein } from '../../styles/keyframes';
 
-const MenuList = ({ chapters }) => (
+const ChapterList = ({ chapters }) => (
   <List>
     { chapters.map(chapter => (
       <ListItem key={chapter.id}>
         <Link to={`/chapter/${chapter.id}`}>
-          <Counter>{chapter.chapterId}{"."}</Counter>
+          <Counter>{chapter.chapterId}{'.'}</Counter>
           <Anchor>{chapter.topic}</Anchor>
         </Link>
       </ListItem>
@@ -22,7 +22,7 @@ const List = styled.ol`
 `;
 
 const ListItem = styled.li`
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.link};
   margin: 1.5rem 0;
   list-style: none;
 `;
@@ -42,6 +42,7 @@ const Link = styled(LinkElement)`
 
   &:hover,
   &:focus {
+    color: ${({ theme }) => theme.hoverLink};
     transform: translateX(2rem);
   }
 
@@ -69,4 +70,4 @@ const Anchor = styled.span`
   }
 `;
 
-export default MenuList;
+export default ChapterList;

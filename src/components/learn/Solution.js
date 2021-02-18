@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import { useDispatch } from "react-redux";
-import { checkTask } from "../store/actions";
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { checkTask } from '../../store/actions';
 
-import { Button } from "../assets/styles";
-import { emerge, fadeaway } from "../assets/keyframes";
+import { Button } from '../../templates/ButtonTemplate';
+import { emerge, fadeaway } from '../../styles/keyframes';
 
 const Solution = ({ isAnswered, correctAnswer }) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -54,7 +54,7 @@ const Wrapper = styled.div`
           animation: ${fadeaway} 0.5s both;
         `
       : css`
-          animation: ${emerge("-5vh", "0")} 0.5s 0.3s both;
+          animation: ${emerge('-5vh', '0')} 0.5s 0.3s both;
         `};
 `;
 

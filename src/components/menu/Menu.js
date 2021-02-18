@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { useFetchChapters } from "../hooks";
+import React from 'react';
+import styled from 'styled-components';
+import useFetchChapters from '../../hooks/useFetchChapters';
 
-import MenuList from "../components/MenuList";
+import ChapterList from './ChapterList';
 
 const Menu = () => {
   const { chapters } = useFetchChapters();
@@ -10,7 +10,7 @@ const Menu = () => {
   return (
     <Nav>
       { chapters &&
-        <MenuList chapters={chapters} />
+        <ChapterList chapters={chapters} />
       }
     </Nav>
   );

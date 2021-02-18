@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled, { css } from "styled-components";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, useRef } from 'react';
+import styled, { css } from 'styled-components';
+import { useDispatch } from 'react-redux';
 import {
   startTask,
   checkSolution,
   cleanSolution,
   completeTask
-} from "../store/actions";
+} from '../../store/actions';
 
-import { Button } from "../assets/styles";
-import { emerge, moveup, fadeaway } from "../assets/keyframes";
+import { Button } from '../../templates/ButtonTemplate';
+import { emerge, moveup, fadeaway } from '../../styles/keyframes';
 
 const UserAnswer = ({ sentence, isAnswered, isChecked, isCompleted }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [rows, setRows] = useState(1);
   const inputRef = useRef();
   const minRows = 1;
@@ -32,7 +32,7 @@ const UserAnswer = ({ sentence, isAnswered, isChecked, isCompleted }) => {
         setIsVisible(true);
         setCleanSolution();
         setStartTask();
-        setValue("");
+        setValue('');
         setRows(1);
       }
     },
@@ -101,8 +101,8 @@ const UserAnswer = ({ sentence, isAnswered, isChecked, isCompleted }) => {
           value={value}
           ref={inputRef}
           onChange={handleChange}
-          lang="en"
-          placeholder="type transcription"
+          lang='en'
+          placeholder='type transcription'
         />
       </Wrapper>
       <Button isVisible={isVisible} onClick={handleCheck}>
@@ -123,7 +123,7 @@ const Form = styled.form`
 
     if (!isCompleted && !isAnswered)
       return css`
-        animation: ${emerge("20vh", "15vh")} 1s both;
+        animation: ${emerge('20vh', '15vh')} 1s both;
       `;
 
     else if (isAnswered && !isChecked)
